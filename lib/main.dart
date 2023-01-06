@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:group_chat_example/isolate_screen.dart';
+import 'package:group_chat_example/views/auth/auth_page.dart';
+import 'package:group_chat_example/views/auth/bloc/auth_bloc.dart';
 import 'package:group_chat_example/views/home/bloc/home_bloc.dart';
 import 'package:group_chat_example/views/home/home_page.dart';
 import 'package:group_chat_example/views/profile/profile_page.dart';
@@ -21,9 +23,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const ProfilePage(),
+      // home: BlocProvider(
+      //   create: (context) => HomeBloc()..add(InitHomeEvent()),
+      //   child: const HomePage(),
+      // ),
       home: BlocProvider(
-        create: (context) => HomeBloc()..add(InitHomeEvent()),
-        child: const HomePage(),
+        create: (context) => AuthBloc()..add(InitAuthEvent()),
+        child: const AuthPage(),
       ),
     );
   }
